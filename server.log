@@ -5,3 +5,37 @@
 2022-05-20 21:35:12.659  INFO 11772 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
 2022-05-20 21:35:12.680  INFO 11772 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
 2022-05-20 21:35:12.683  INFO 11772 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-05-20 21:38:20.611  INFO 13232 --- [restartedMain] dpImplementUserSignInFunctionApplication : Starting SpringBootRedisHmdpImplementUserSignInFunctionApplication using Java 16.0.2 on mao with PID 13232 (H:\程序\大三下期\spring_boot_redis_hmdp实现用户签到功能\target\classes started by mao in H:\程序\大三下期\spring_boot_redis_hmdp实现用户签到功能)
+2022-05-20 21:38:20.612 DEBUG 13232 --- [restartedMain] dpImplementUserSignInFunctionApplication : Running with Spring Boot v2.7.0, Spring v5.3.20
+2022-05-20 21:38:20.612  INFO 13232 --- [restartedMain] dpImplementUserSignInFunctionApplication : The following 1 profile is active: "dev"
+2022-05-20 21:38:20.646  INFO 13232 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-20 21:38:20.647  INFO 13232 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-20 21:38:21.384  INFO 13232 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-05-20 21:38:21.386  INFO 13232 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-05-20 21:38:21.407  INFO 13232 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2022-05-20 21:38:21.881  INFO 13232 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-05-20 21:38:21.887  INFO 13232 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-20 21:38:21.888  INFO 13232 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-05-20 21:38:21.959  INFO 13232 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-20 21:38:21.960  INFO 13232 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1313 ms
+2022-05-20 21:38:22.007  INFO 13232 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-05-20 21:38:22.111  INFO 13232 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-05-20 21:38:22.336  INFO 13232 --- [restartedMain] org.redisson.Version                     : Redisson 3.17.0
+2022-05-20 21:38:22.591  INFO 13232 --- [redisson-netty-2-13] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+2022-05-20 21:38:22.602  INFO 13232 --- [redisson-netty-2-19] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for 127.0.0.1/127.0.0.1:6379
+2022-05-20 21:38:23.944  INFO 13232 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-05-20 21:38:23.948  INFO 13232 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-05-20 21:38:24.042  INFO 13232 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-05-20 21:38:24.043  INFO 13232 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2022-05-20 21:38:24.063  INFO 13232 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6116d89b:0/SimpleConnection@7f9876e5 [delegate=amqp://admin@127.0.0.1:5672/, localPort= 56649]
+2022-05-20 21:38:24.067  INFO 13232 --- [restartedMain] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable or auto-delete Exchange (hmdp_exchange) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2022-05-20 21:38:24.067  INFO 13232 --- [restartedMain] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (hmdp_queue) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2022-05-20 21:38:24.121  INFO 13232 --- [restartedMain] dpImplementUserSignInFunctionApplication : Started SpringBootRedisHmdpImplementUserSignInFunctionApplication in 3.84 seconds (JVM running for 4.453)
+2022-05-20 21:38:24.475  INFO 13232 --- [RMI TCP Connection(3)-172.28.144.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-05-20 21:38:24.475  INFO 13232 --- [RMI TCP Connection(3)-172.28.144.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-05-20 21:38:24.476  INFO 13232 --- [RMI TCP Connection(3)-172.28.144.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-05-20 21:38:27.553  INFO 13232 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-05-20 21:38:28.123  INFO 13232 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2022-05-20 21:38:28.144  INFO 13232 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2022-05-20 21:38:28.165  INFO 13232 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-05-20 21:38:28.169  INFO 13232 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
