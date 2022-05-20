@@ -113,4 +113,17 @@ public class UserController
     {
         return userService.sign();
     }
+
+    /**
+     * 实现签到统计功能
+     * 连续签到次数：从最后一次签到开始向前统计，直到遇到第一次未签到为止，计算总的签到次数
+     *
+     * @return Result
+     */
+    @GetMapping("/signCount")
+    public Result signCount()
+    {
+        return userService.signCount();
+    }
 }
+

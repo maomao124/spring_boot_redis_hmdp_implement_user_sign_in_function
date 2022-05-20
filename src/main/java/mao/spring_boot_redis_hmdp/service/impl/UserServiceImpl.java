@@ -15,6 +15,7 @@ import mao.spring_boot_redis_hmdp.utils.RedisConstants;
 import mao.spring_boot_redis_hmdp.utils.RegexUtils;
 import mao.spring_boot_redis_hmdp.utils.SystemConstants;
 import mao.spring_boot_redis_hmdp.utils.UserHolder;
+import org.springframework.data.redis.connection.BitFieldSubCommands;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -155,5 +157,64 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         stringRedisTemplate.opsForValue().setBit(redisKey, dayOfMonth - 1, true);
         //返回
         return Result.ok();
+    }
+
+    @Override
+    public Result signCount()
+    {
+        //获得当前登录的用户
+        UserDTO user = UserHolder.getUser();
+        //获得用户的id
+        Long userId = user.getId();
+        //获得当前的日期
+        LocalDateTime now = LocalDateTime.now();
+        //格式化，：年月
+        String keySuffix = now.format(DateTimeFormatter.ofPattern(":yyyyMM"));
+        //redis key
+        String redisKey = RedisConstants.USER_SIGN_KEY + userId + keySuffix;
+        //获得今天是本月的第几天，日期：从 1 到 31
+        int dayOfMonth = now.getDayOfMonth();
+        //从redis里取签到结果
+        List<Long> list = stringRedisTemplate.opsForValue()
+                .bitField(redisKey,
+                        BitFieldSubCommands.create()
+                                .get(BitFieldSubCommands
+                                        .BitFieldType
+                                        .unsigned(dayOfMonth)).valueAt(0));
+        //判断是否为空
+        if (list == null || list.size() == 0)
+        {
+            //没有，返回0
+            return Result.ok(0);
+        }
+        //取第一个，因为一个月最多有31天，小于32位，所以只有一个
+        Long num = list.get(0);
+        //判断第一个是否为空
+        if (num == null || num == 0)
+        {
+            //第一个为0，返回直接0
+            return Result.ok(0);
+        }
+        //计数器
+        int count = 0;
+        //循环遍历数据
+        while (true)
+        {
+            //无符号，和1做与运算
+            long result = num & 1;
+            //判断是否为未签到
+            if (result == 0)
+            {
+                //为签到，跳出循环
+                break;
+            }
+            //不是0
+            //计数器+1
+            count++;
+            //右移一位，左边会补0，所以不用担心会死循环
+            num = num >> 1;
+        }
+        //返回
+        return Result.ok(count);
     }
 }
